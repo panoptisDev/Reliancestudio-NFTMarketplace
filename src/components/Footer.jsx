@@ -31,7 +31,7 @@ const Footer = () => {
             <div className='bg-transparent relative w-full lg:h-[540px] overflow-hidden pt-[70px] lg:pt-[150px]'>
                 <Blur2 className='absolute z-10 w-[1150px] h-[773px] md:w-[1150px] md:h-[573px]' />
                 <Blur2 className='absolute z-10 w-[1150px] h-[773px] md:w-[1200px] md:h-[573px]' />
-                <div className="mx-auto relative 3xl:absolute z-50 max-w-[1200px] 3xl:w-[1190px] ml-5 lg:ml-0">
+                <div className="mx-auto relative 3xl:absolute z-40 max-w-[1200px] 3xl:w-[1190px] ml-5 lg:ml-0">
                     <div className="xl:grid xl:grid-cols-4">
                         <div className="space-y-8 xl:col-span-1">
                             <Link to="/" className='hidden sm:block'>

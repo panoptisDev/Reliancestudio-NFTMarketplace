@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Transition, Menu } from '@headlessui/react'
 import "./OpenPageNFT.css"
 import { ReactComponent as StatusTop } from "../assets/statustop.svg"
@@ -59,8 +59,8 @@ const OpenPageNFT = ({ onBuy, account }) => {
             <Blur className='absolute top-0 mt-[70px] lg:mt-0 right-0 z-10 w-[400px] h-[350px] md:w-[400px] 2xl:w-[973px] lg:h-[673px]' />
             <Blur className='absolute top-0 mt-[70px] lg:mt-0 right-0 z-10 w-[350px] h-[240px] md:w-[400px] 2xl:w-[1573px] lg:h-[673px]' />
             <div className='mt-[140px] lg:mt-[208px] flex flex-col lg:ml-[40px] 3xl:ml-[120px] lg:max-w-[1200px]'>
-                <div className="relative z-50 flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-8 overflow-hidden items-center lg:items-start px-4 lg:px-0">
-                    <div className="flex flex-col">
+                <div className="relative z-30 flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-8 overflow-hidden items-center lg:items-start px-4 lg:px-0">
+                    <div className="flex flex-col w-full">
                         <p className="mt-[40px] lg:mt-0 text-[#828383] text-sm uppercase font-gilroyMedium">{formaStringDate(collection.createdAt)}</p>
                         <p className="mt-[30px] text-white text-[36px] lg:text-[62px] font-gilroy font-semibold leading-[40px] lg:leading-[65px]">{collection.name} #{current.id}</p>
                         <div className="flex items-center">
@@ -147,9 +147,9 @@ const OpenPageNFT = ({ onBuy, account }) => {
                     <div className='flex flex-row justify-between'>
                         <p className='text-white text-[36px] lg:text-[46px] font-gilroy font-semibold leading-[40px] lg:leading-[50px]'>Other NTFs in this <br /> collection</p>
                         <div className="hidden md:block mr-4 lg:mr-0">
-                            <a href={`/collection/${collection.address}`} className='flex flex-row items-center justify-center w-[205px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] hover:bg-[#beff55] hover:text-black hover:font-gilroy hover:font-semibold text-base font-gilroy mt-5'>
+                            <Link to={`/collection/${collection.address}`} className='flex flex-row items-center justify-center w-[205px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] hover:bg-[#beff55] hover:text-black hover:font-gilroy hover:font-semibold text-base font-gilroy mt-5'>
                                 See All Collection
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className='mt-[30px] lg:mt-10 block w-full overflow-x-scroll horizontal_slider'>
@@ -161,9 +161,11 @@ const OpenPageNFT = ({ onBuy, account }) => {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <a href={`/collection/${collection.address}`} className='flex md:hidden mt-[30px] items-center justify-center w-[319px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] hover:bg-[#beff55] hover:text-black hover:font-gilroy hover:font-semibold text-base font-gilroy'>
-                        See All Collection
-                    </a>
+                    <Link to={`/collection/${collection.address}`}>
+                        <button className='flex md:hidden mt-[30px] items-center justify-center w-[319px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] hover:bg-[#beff55] hover:text-black hover:font-gilroy hover:font-semibold text-base font-gilroy'>
+                            See All Collection
+                        </button>
+                    </Link>
                 </div>
                 <Footer />
             </div>

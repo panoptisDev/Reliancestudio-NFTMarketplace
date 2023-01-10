@@ -135,18 +135,9 @@ const Collection = () => {
             </div>
           </form>
           <div className='block whitespace-nowrap lg:ml-[30px] mt-[15px] lg:mt-[12px] space-x-2.5 lg:flex lg:flex-row w-full overflow-x-scroll horizontal_slider'>
-            {/* <button className='inline-block lg:flex lg:flex-row items-center justify-center w-[112px] h-[56px] border-2 border-[#3b3c3c] text-white rounded-[41px] text-base font-gilroy'>
-              <p>Solana</p>
-            </button> */}
             <button className='inline-block lg:flex lg:flex-row items-center justify-center w-[130px] h-[56px] text-white rounded-[41px] bg-[#181818] hover:bg-[#232323] text-base font-gilroy'>
               <p>Ethereum</p>
             </button>
-            {/* <button className='inline-block lg:flex lg:flex-row items-center justify-center text-center w-[119px] h-[56px] text-white rounded-[41px] bg-[#181818] hover:bg-[#232323]  text-base font-gilroy'>
-              <p>Polygon</p>
-            </button> */}
-            {/* <button className='inline-block lg:flex lg:flex-row items-center justify-center text-center w-[78px] h-[56px] text-white rounded-[41px] bg-[#181818] hover:bg-[#232323]  text-base font-gilroy'>
-              <p>All</p>
-            </button> */}
           </div>
           <Menu as="div" className="relative">
             <div className="flex mt-[15px] lg:mt-[12px] pr-5 xl:pr-0">

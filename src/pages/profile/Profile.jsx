@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Copy } from "../../assets/copy.svg"
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Darknes2 from "../../assets/darknes2.png"
-import { ReactComponent as ArrowDown } from "../../assets/arrowdown.svg"
 import { ReactComponent as Blur } from "../../assets/blurs/blur.svg"
 import { ReactComponent as Search } from "../../assets/search.svg";
 import "./Profile.css"

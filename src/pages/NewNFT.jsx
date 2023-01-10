@@ -5,6 +5,7 @@ import { ReactComponent as Blur } from "../assets/blurs/blur.svg"
 import { ReactComponent as Search } from "../assets/search.svg";
 import { Transition, Menu } from '@headlessui/react';
 import { config } from "../config";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const NewNFT = () => {
@@ -56,7 +57,7 @@ const NewNFT = () => {
   let imagesHtml = images.map((nft, i) => {
     return (
       <div  key={i}  className='bg-[#1a1a19] w-[320px] h-[402px] lg:w-[260px] lg:h-[339px] rounded-[15px] cursor-pointer'>
-        <a href={`/item/${nft._id}`}>
+        <Link to={`/item/${nft._id}`}>
           <div className="overflow-hidden relative px-[10px] pt-[10px]">
             <img
               src={nft.data.url}
@@ -66,7 +67,7 @@ const NewNFT = () => {
           </div>
           <h3 className="mt-[12px] text-[20px] max-w-[250px] truncate font-gilroy text-white hover:text-[#beff55] px-5">{nft.collection} #{nft.id}</h3>
           <p className="text-sm font-gilroy max-w-[250px] truncate text-[#888989] px-5 uppercase">{nft.data.name}</p>
-        </a>
+        </Link>
       </div>
     )
   })

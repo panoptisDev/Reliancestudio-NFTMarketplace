@@ -5,3 +5,7 @@
 .activity:hover svg circle {
     stroke: black;
 }
+
+.activity2:hover svg path {
+    stroke: white;
+}

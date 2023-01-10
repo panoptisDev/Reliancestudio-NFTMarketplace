@@ -205,9 +205,7 @@ const MyCollectionCreate = ({ web3, account }) => {
             }
           </div>
         </div>
-        <div className="-ml-5 lg:ml-0">
           <Footer />
-        </div>
       </div>
     </div>
   )

@@ -175,9 +175,7 @@ const MyCollectionAdd = ({ account, web3 }) => {
             </div>
           </div>
         </div>
-        <div className="-ml-5 lg:ml-0">
           <Footer />
-        </div>
       </div>
     </div>
   )

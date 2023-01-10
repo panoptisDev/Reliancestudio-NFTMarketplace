@@ -34,8 +34,8 @@ const ModalListNft = ({ setActive, account, _id, _status, _price, getMy }) => {
     return (
         <Transition.Root show={open} as={Fragment}>
             <div className={true ? "fixed w-screen h-screen bg-black bg-opacity-80 top-0 left-0 flex items-center justify-center z-50 scale-100" : "fixed w-screen h-screen bg-black bg-opacity-80 top-0 left-0 flex items-center justify-center z-50 scale-0"} onClick={() => setActive(false)}>
-                <div className="rounded-[15px] bg-[#131313] w-[320px] lg:w-[560px]  overflow-hidden h-[445px] lg:h-[476px]" onClick={e => e.stopPropagation()}>
-                    <div className="flex flex-row w-full justify-end p-[9px] lg:p-5">
+                <div className="rounded-[15px] bg-[#131313] w-[320px] lg:w-[560px] overflow-hidden h-[445px] lg:h-[476px] z-50" onClick={e => e.stopPropagation()}>
+                    <div className="flex flex-row w-full justify-end p-[9px] lg:p-5 activity2">
                         <Close className="cursor-pointer" onClick={() => setActive(false)} />
                     </div>
                     <div className="flex flex-col mt-[20px] text-center">

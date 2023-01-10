@@ -1,5 +1,6 @@
 import { React, Fragment, useState } from "react";
 import { Transition, Menu } from '@headlessui/react';
+import { Link } from "react-router-dom";
 import ModalListNft from "./ModalListNft";
 import ArrowDown from "../../assets/arrow.png"
 import ModalWithdrawNft from "./ModalWithdrawNft";
@@ -20,7 +21,7 @@ export const NftMy = ({ data, text, account, serviceBalance, getMy, getBalance, 
     return (
         <div className="inline-block h-[580px]">
             <div className='border-[#232323] bg-[#1a1a19] hover:bg-[#242424] w-[260px] h-[437px] rounded-[15px] cursor-pointer' style={{ display: display }}>
-                <a href={`/item/${data._id}`}>
+                <Link to={`/item/${data._id}`}>
                     <div className="overflow-hidden relative px-[10px] pt-[10px]">
                         <img
                             src={data.data.url}
@@ -37,7 +38,7 @@ export const NftMy = ({ data, text, account, serviceBalance, getMy, getBalance, 
                             className="mr-1 w-[15px] h-[15px] mt-[9px]" />
                         <p className="text-[20px] max-w-[200px] truncate font-gilroy text-white pr-5">{data.price}</p>
                     </div>
-                </a>
+                </Link>
                 <Menu as="div" className="relative">
                     <div className="flex mt-[15px] ml-5 lg:mt-[12px]">
                         <Menu.Button className='flex flex-row items-center justify-center w-[220px] h-[58px] border-2 border-[#3b3c3c] text-white rounded-[41px] text-base font-gilroy hover:border-[#beff55]'>

@@ -42,7 +42,7 @@ export const Popular = ({ }) => {
 
         return(
             <div key={i} className='inline-block border border-[#232323] bg-[#1a1a19] hover:bg-[#242424] w-[360px] h-[332px] rounded-[15px] cursor-pointer'>
-                <a href={`/collection/${collection.address}`}>
+                <Link to={`/collection/${collection.address}`}>
                     <div className="overflow-hidden relative px-[20px] pt-[20px] h-[230px]">
                         <div className='flex gap-2'>
                             {
@@ -91,18 +91,13 @@ export const Popular = ({ }) => {
                     </div>
                     <div className="flex items-center ml-5 mt-5">
                         <Ellipse className='w-[50px] h-[50px] rounded-full' />
-                        {/* <img
-                        src={Collection1icon}
-                        alt=""
-                        className='w-[50px] h-[50px] rounded-full'
-                    /> */}
                         <Validate className='-ml-[16px] mt-[36px] w-[15px] h-[15px]' />
                         <div className='ml-[14px]'>
                             <h3 className='text-lg font-gilroy max-w-[250px] truncate text-white hover:text-[#beff55]'>{collection.name}</h3>
                             <p className="text-sm -mt-[2px] max-w-[250px] truncate font-gilroy text-[#888989]">{collection.nfts.length} Items</p>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
         )
 
