@@ -152,7 +152,6 @@ const Profile = ({ web3, account, balance }) => {
                             </Link>
                         </div>
                     </div>
-                    {/* section profile balance for desktop */}
                     <div className="hidden lg:flex lg:flex-col mt-[70px]">
                         <div className="relative z-30 pl-5 lg:px-0 lg:mr-5 2xl:mr-0">
                             <div className='flex flex-row gap-5'>
@@ -178,7 +177,6 @@ const Profile = ({ web3, account, balance }) => {
                         </div>
                     </div>
                 </div>
-                {/* section profile balance for mobile */}
                 <div className="block lg:hidden">
                     <div className="relative z-30 pl-5 pr-2">
                         <div className='mt-[40px] block w-full overflow-x-scroll horizontal_slider'>
@@ -211,7 +209,6 @@ const Profile = ({ web3, account, balance }) => {
                     </div>
                 </div>
             </div>
-            {/* my items section */}
             <div className="relative z-30 mt-[80px] lg:mt-[105px] pl-5 lg:px-0 lg:mr-5 lg:ml-[40px] 3xl:ml-[120px] lg:max-w-[1170px]">
                 <div className='flex flex-col md:flex-row justify-between'>
                     <p className='text-white text-[36px] lg:text-[46px] font-gilroy font-semibold'>My Items</p>
@@ -237,13 +234,6 @@ const Profile = ({ web3, account, balance }) => {
                         }
                     </div>
                 </div>
-                {/* 
-                <div className="flex justify-center">
-                    <button className='hidden lg:flex mt-[30px] lg:mt-[80px] items-center justify-center w-[228px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] text-[18px] font-gilroy cursor-pointer'>
-                        Show More Items
-                        <ArrowDown className="ml-3" />
-                    </button>
-                </div> */}
                 <div className="relative flex flex-col lg:flex-row z-30 justify-between">
                     <p className='text-white text-[36px] lg:text-[46px] font-gilroy font-semibold'>Transaction</p>
                     <div className='flex flex-row mt-[15px] lg:mt-[10px] gap-3'>

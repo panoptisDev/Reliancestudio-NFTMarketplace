@@ -327,14 +327,6 @@ const Mainpage = () => {
                         </Link>
                       </button>
                     }
-                    {/* <button className='w-[340px] h-[58px] rounded-[41px] text-white bg-transparent text-[18px] font-gilroy tracking-wide border-2 border-[#3b3c3c]'>
-                      Подключенный кошель
-                    </button>
-                    <button className='mt-5 w-[340px] h-[58px] rounded-[41px] text-black bg-[#beff55]'>
-                    <Link to="/profile" className='text-black text-center text-[18px] font-gilroy tracking-wide font-semibold'>
-                      <p>Profile</p>
-                    </Link>
-                    </button> */}
                   </div>
                   <nav className="flex flex-col" aria-label="Sidebar">
                     <p className='text-[#F9FAFA80] uppercase font-gilroy text-sm mt-[40px] ml-[55px]'>main menu</p>
@@ -374,8 +366,6 @@ const Mainpage = () => {
           </div>
         </Dialog>
       </Transition.Root>
-
-      {/* Sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-[259px] lg:flex-col">
         <div className="flex flex-grow flex-col overflow-y-auto bg-[#131313] pt-[30px] pb-4">
           <div className="flex flex-shrink-0 items-center ml-[45px]">
@@ -448,25 +438,8 @@ const Mainpage = () => {
               <Close className='w-10 h-10' onClick={handleClick} />
             </div>
           </div>
-          {/* Search bar */}
           <div className="hidden lg:flex lg:flex-row justify-between lg:ml-[40px] 3xl:ml-[120px] lg:w-[1200px] lg:pt-[30px] z-30">
             <SearchBar></SearchBar>
-            {/* <div className="flex flex-row">
-              <form className="flex" action="#" method="GET">
-                <div className="relative xl:w-[560px] h-[56px] border-2 border-[#3b3c3c] rounded-[41px] text-black">
-                  <input
-                    id="search-field"
-                    name="search-field"
-                    className="w-[400px] block h-full border-transparent pl-[30px] text-[#828383] placeholder-[#828383] bg-transparent focus:border-transparent font-gilroyMedium focus:outline-none focus:ring-0 text-[16px]"
-                    placeholder="Search Collections and Creators"
-                    type="search"
-                  />
-                  <div className="pointer-events-none absolute inset-y-0 right-0 pr-4 md:pr-[30px] flex items-center" aria-hidden="true">
-                    <Search className="h-[19px] w-[19px] text-[#828383]" aria-hidden="true" />
-                  </div>
-                </div>
-              </form>
-            </div> */}
             <div className="relative z-50 hidden md:flex md:flex-row md:mt-5 items-center space-x-3 mr-5">
               {
                 account &&

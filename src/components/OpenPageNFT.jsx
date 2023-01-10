@@ -23,22 +23,22 @@ const OpenPageNFT = ({ onBuy, account }) => {
     useEffect(() => {
 
         axios.get(`${config.api}/nft/get?id=${params.id}`)
-        .then((response)=>{
-            const nft = response.data;
-            axios.get(`${config.api}/collections/get?address=${nft.address}`)
             .then((response) => {
+                const nft = response.data;
+                axios.get(`${config.api}/collections/get?address=${nft.address}`)
+                    .then((response) => {
 
-                const collection = response.data;
-                setCollection(collection);
-                setCurrent(nft);
-                axios.get(`${config.api}/nft/collection?address=${nft.address}&limit=5`)
-                .then((response) => {
-                    const list = response.data;
-                    let other = list.filter((l)=>{ return l._id !== nft._id });
-                    setImages(other);
-                });
+                        const collection = response.data;
+                        setCollection(collection);
+                        setCurrent(nft);
+                        axios.get(`${config.api}/nft/collection?address=${nft.address}&limit=5`)
+                            .then((response) => {
+                                const list = response.data;
+                                let other = list.filter((l) => { return l._id !== nft._id });
+                                setImages(other);
+                            });
+                    });
             });
-        });
 
         getDifference().then((diff) => {
             setDifference(diff);
@@ -59,24 +59,17 @@ const OpenPageNFT = ({ onBuy, account }) => {
             <Blur className='absolute top-0 mt-[70px] lg:mt-0 right-0 z-10 w-[400px] h-[350px] md:w-[400px] 2xl:w-[973px] lg:h-[673px]' />
             <Blur className='absolute top-0 mt-[70px] lg:mt-0 right-0 z-10 w-[350px] h-[240px] md:w-[400px] 2xl:w-[1573px] lg:h-[673px]' />
             <div className='mt-[140px] lg:mt-[208px] flex flex-col lg:ml-[40px] 3xl:ml-[120px] lg:max-w-[1200px]'>
-                {/* Header section */}
                 <div className="relative z-50 flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-8 overflow-hidden items-center lg:items-start px-4 lg:px-0">
                     <div className="flex flex-col">
                         <p className="mt-[40px] lg:mt-0 text-[#828383] text-sm uppercase font-gilroyMedium">{formaStringDate(collection.createdAt)}</p>
                         <p className="mt-[30px] text-white text-[36px] lg:text-[62px] font-gilroy font-semibold leading-[40px] lg:leading-[65px]">{collection.name} #{current.id}</p>
                         <div className="flex items-center">
-                            {
-                                collection.author  &
-                                <>
-                                    <p className="mt-[13px] text-[#beff55] text-base lg:text-xl font-gilroy">{collection.author}</p>
-                                    <Validate className='mt-3 ml-[10px] w-[15px] h-[15px]' />
-                                </>
-                            }
+                            <p className="mt-[13px] text-[#beff55] text-base lg:text-xl font-gilroy font-semibold">{collection.author}</p>
+                            <Validate className='mt-3 ml-[10px] w-[15px] h-[15px]' />
                         </div>
                         <p className="mt-[30px] text-[#828383] text-base lg:text-lg font-gilroy font-semibold max-w-[560px]">
                             {collection.description}
                         </p>
-
                         <Menu as="div" className="relative mt-[30px]">
                             <div className="flex flex-col border-2 border-[#3b3c3c] rounded-[15px] max-w-[560px] lg:max-w-[560px] max-h-[251px] px-[30px] lg:hover:border-[#beff55]">
                                 <Menu.Button className="flex flex-row max-w-[560px] lg:max-w-[497px] justify-between items-center h-[60px]">
@@ -132,7 +125,7 @@ const OpenPageNFT = ({ onBuy, account }) => {
                                     <button onClick={onBuyClick} className='lg:w-[190px] h-[58px] rounded-[41px] text-black bg-[#beff55] text-[18px] font-gilroy tracking-wide font-semibold mt-1 lg:mt-2'>Buy Now</button>
                                 }
                                 {
-                                     current && current.status == "delisted" &&
+                                    current && current.status == "delisted" &&
                                     <button className='lg:w-[190px] h-[58px] rounded-[41px] text-black bg-[#beff55] text-[18px] font-gilroy tracking-wide font-semibold mt-1 lg:mt-2'>Delisted</button>
                                 }
                             </div>

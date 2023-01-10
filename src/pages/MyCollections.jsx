@@ -1,10 +1,7 @@
-import { React, Fragment, useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer"
 import { ReactComponent as Blur } from "../assets/blurs/blur.svg"
-import { ReactComponent as ArrowDown } from "../assets/arrowdown.svg"
-import { ReactComponent as Search } from "../assets/search.svg";
-import { Transition, Menu } from '@headlessui/react';
 import axios from 'axios';
 import { config } from '../config';
 

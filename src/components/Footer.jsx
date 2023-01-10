@@ -41,7 +41,6 @@ const Footer = () => {
                                 <LogoMini />
                             </Link>
                         </div>
-                        {/* Desktop menu */}
                         <div className="hidden mt-12 md:grid grid-cols-2 gap-8 xl:col-span-3 xl:mt-0 lg:ml-[50px]">
                             <div className="md:grid md:grid-cols-2 md:gap-8">
                                 <div>

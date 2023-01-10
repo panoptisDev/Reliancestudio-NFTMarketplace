@@ -1,5 +1,4 @@
-import { React, Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { React, useState, useEffect } from "react";
 import Footer from "../components/Footer"
 import axios from 'axios';
 import { ReactComponent as Blur } from "../assets/blurs/blur.svg"

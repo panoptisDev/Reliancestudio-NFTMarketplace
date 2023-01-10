@@ -133,7 +133,6 @@ const OpenPageCollection = () => {
               <Social3 className='w-[40px] h-[40px]' />
             </div>
           </div>
-          {/* section collection details for desktop */}
           <div className="hidden lg:flex lg:flex-col">
             <div className="relative z-30 pl-5 lg:px-0 lg:mr-5 2xl:mr-0">
               <div className='flex flex-wrap gap-5'>
@@ -188,7 +187,6 @@ const OpenPageCollection = () => {
             </div>
           </div>
         </div>
-        {/* section collection details for mobile */}
         <div className="block lg:hidden">
           <div className="relative z-30 pl-5 pr-2">
             <div className='mt-[40px] block w-full overflow-x-scroll horizontal_slider'>
@@ -305,12 +303,6 @@ const OpenPageCollection = () => {
           </div>
         </div>
         <div className="-ml-5 lg:ml-0">
-          {/* <div className="flex flex-row justify-center">
-            <button className='flex mt-[30px] lg:mt-[80px] items-center justify-center w-[350px] lg:w-[228px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] text-[18px] font-gilroy cursor-pointer'>
-              Show More Items
-              <ArrowDown className="ml-3" />
-            </button>
-          </div> */}
           <Footer />
         </div>
       </div>

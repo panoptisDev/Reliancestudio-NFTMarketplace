@@ -46,14 +46,6 @@ const ModalConnectWallet = ({ active, setActive, account, getProfile }) => {
                             value={name}
                             onChange={(e)=>{ setName(e.target.value); }}
                         />
-                        {/* <input
-                            type="name"
-                            name="name"
-                            id="name"
-                            className="flex w-full h-[56px] rounded-[10px] border-2 border-[#3b3c3c] bg-transparent text-[#828383] placeholder-[#828383] text-[16px] px-5 focus:outline-none focus:ring-0"
-                            placeholder="Display name"
-                            aria-describedby="name-description"
-                        /> */}
                         <input
                             className="flex w-full h-[56px] rounded-[10px] border-2 border-[#3b3c3c] bg-transparent text-[#828383] placeholder-[#828383] text-[16px] px-5 focus:outline-none focus:ring-0"
                             placeholder="Email"
