@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Validate } from "../assets/validate.svg"
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { config } from '../config';
 
 export const SearchBarMob = () => {
@@ -34,7 +35,7 @@ export const SearchBarMob = () => {
 
     const resultHtml = result.map((r, i) => {
         return (
-            <a key={i} href={`/collection/${r.address}`} className='w-[266px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] px-3 hover:bg-[#242424] text-white text-base font-gilroy ml-[18px]'>
+            <Link key={i} to={`/collection/${r.address}`} className='w-[266px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] px-3 hover:bg-[#242424] text-white text-base font-gilroy ml-[18px]'>
                 <div className='flex flex-row'>
                     <div className='relative'>
                         <img
@@ -49,7 +50,7 @@ export const SearchBarMob = () => {
                         <p className='font-gilroy max-w-[160px] truncate text-[#828383] text-[14px] -mt-[3px]'>{r.owner}</p>
                     </div>
                 </div>
-            </a>
+            </Link>
         )
     });
 

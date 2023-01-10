@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ReactComponent as Search } from '../assets/search.svg';
 import { ReactComponent as Validate } from "../assets/validate.svg"
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { config } from '../config';
 
 export const SearchBar = () => {
@@ -35,7 +36,7 @@ export const SearchBar = () => {
 
     const resultHtml = result.map((r, i) => {
         return (
-            <a  href={`/collection/${r.address}`} key={i} className='w-[406px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] hover:bg-[#242424] text-white ml-7 text-base font-gilroy px-4'>
+            <Link to={`/collection/${r.address}`} key={i} className='w-[406px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] hover:bg-[#242424] text-white ml-7 text-base font-gilroy px-4'>
                 <div className='flex flex-row'>
                     <div className='relative'>
                         <img
@@ -50,7 +51,7 @@ export const SearchBar = () => {
                         <p className='font-gilroy lg:max-w-[400px] truncate text-[#828383] text-[14px] -mt-[3px]'>{r.author}</p>
                     </div>
                 </div>
-            </a>
+            </Link>
 
         )
     });
