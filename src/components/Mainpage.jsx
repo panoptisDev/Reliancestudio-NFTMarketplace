@@ -341,7 +341,7 @@ const Mainpage = () => {
                           key={item.name}
                           to={item.path}
                           onClick={() => setSidebarOpen(false)}
-                          className='activity flex items-center text-lg w-[219px] h-[60px] font-gilroyMedium text-white tracking-wide'
+                          className='flex items-center text-lg w-[219px] h-[60px] font-gilroyMedium text-white tracking-wide'
                         >
                           <item.icon className="mr-[6px] h-[30px] w-[30px] flex-shrink-0" aria-hidden="true" />
                           {item.name}
@@ -356,7 +356,7 @@ const Mainpage = () => {
                           key={item.name}
                           to={item.path}
                           onClick={() => setSidebarOpen(false)}
-                          className='activity flex items-center text-lg w-[219px] h-[60px] font-gilroyMedium text-white tracking-wide'
+                          className='flex items-center text-lg w-[219px] h-[60px] font-gilroyMedium text-white tracking-wide'
                         >
                           <item.icon className="mr-[6px] h-[30px] w-[30px] flex-shrink-0" aria-hidden="true" />
                           {item.name}
