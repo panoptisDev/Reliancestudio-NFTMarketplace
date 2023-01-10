@@ -71,7 +71,7 @@ export const SearchBar = () => {
                     </div>
                     {
                         result.length !== 0 &&
-                        <div className='flex flex-col w-[360px] xl:w-[560px] rounded-[15px] max-h-max bg-[#131313] mt-3'>
+                        <div className='flex flex-col w-[360px] xl:w-[560px] rounded-[15px] max-h-[422px] overflow-y-scroll bg-[#131313] mt-3 horizontal_slider'>
                             <p className='mt-[10px] font-gilroy text-[18px] ml-[30px] text-[#828383]'>Found <span className='text-white font-gilroy text-[18px]'>{result.length} similarities</span></p>
                             <div className='mb-[10px]'>
                                 {resultHtml}

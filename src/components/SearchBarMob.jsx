@@ -66,7 +66,7 @@ export const SearchBarMob = () => {
                     />
                     {
                         result.length !== 0 &&
-                        <div className='flex flex-col w-[300px] rounded-[15px] max-h-max bg-[#131313] mt-5'>
+                        <div className='flex flex-col w-[300px] rounded-[15px] max-h-[348px] overflow-y-scroll bg-[#131313] mt-5 horizontal_slider'>
                             <p className='mt-[10px] font-gilroy text-[18px] ml-[30px] text-[#828383]'>Found <span className='text-white font-gilroy text-[18px]'>{result.length} similarities</span></p>
                             <div className='mb-[10px]'>
                                 {resultHtml}
