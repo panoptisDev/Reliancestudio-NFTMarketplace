@@ -77,6 +77,10 @@ const Mainpage = () => {
   const [accounts, setAccounts] = useState([]);
   const [balance, setBalance] = useState(0);
 
+  const check = async(account)=>{
+    axios.get(`${config.api}/users/get?address=${account}`);
+  }
+
   const getBalance = (web3, account) => {
     web3.eth.getBalance(account).then((balance) => {
       setBalance(parseFloat(web3.utils.fromWei(balance.toString(), "ether")).toFixed(2));
@@ -98,6 +102,7 @@ const Mainpage = () => {
           setModalConnectWalletActive(false);
           setAccounts(accounts);
           getBalance(web3, account);
+          check(account);
         } else {
           alert("Switch to main network!")
         }

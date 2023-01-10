@@ -74,11 +74,6 @@ const Collection = () => {
 
   const collectionsHtml = collections.map((col, i) => {
 
-    let totalEth = 0;
-    // col.prices.forEach((p)=>{
-    //   totalEth += p;
-    // });
-
     return (
       <Link to={`/collection/${col.address}`} key={i}>
         <div className="grid grid-cols-7 hover:bg-[#252624] cursor-pointer w-[1145px] text-right justify-between items-center px-[30px] h-[56px] bg-[#1a1a19] rounded-[10px] mt-1.5">
