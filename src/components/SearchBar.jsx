@@ -40,7 +40,7 @@ export const SearchBar = () => {
                 <div className='flex flex-row'>
                     <div className='relative'>
                         <img
-                            src={`${config.api}/${r.logo}`}
+                            src={`${r.logo}`}
                             alt="/"
                             className='h-[50px] w-[50px] rounded-full mr-4'
                         />

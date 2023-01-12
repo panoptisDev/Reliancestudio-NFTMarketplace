@@ -62,6 +62,7 @@ const MyCollectionCreate = ({ web3, account }) => {
 
     setBusy(true);
 
+
     axios.post(`${config.api}/contract/create`, { name, symbol }).then((response) => {
 
       const compiled = response.data;

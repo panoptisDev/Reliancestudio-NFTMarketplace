@@ -114,7 +114,7 @@ const OpenPageCollection = () => {
             <div className='relative'>
               <div className='w-[100px] h-[100px] bg-transparent border-2 border-[#beff55] rounded-full'>
                 <img
-                  src={`${config.api}/${collection.logo}`}
+                  src={`${collection.logo}`}
                   alt="/"
                   className='w-[90px] h-[90px] ml-[3.2px] mt-[2.5px] object-cover rounded-full object-center'
                 />

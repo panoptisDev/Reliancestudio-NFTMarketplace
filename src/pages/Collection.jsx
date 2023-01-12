@@ -80,7 +80,7 @@ const Collection = () => {
           <div className="flex items-center relative">
             <p className="text-[#888888] text-[16px] font-gilroy mr-[15px]">{i + 1}</p>
             <img
-              src={`${config.api}/${col.logo}`}
+              src={`${col.logo}`}
               alt="/"
               className="w-[40px] h-[40px] rounded-full mr-[15px]"
             />

@@ -91,7 +91,8 @@ const MyCollectionEdit = ({ web3, account }) => {
       description,
       type,
       totalSupply,
-      logo: file ? file : logo,
+      logo: logo,
+      file: file,
       _id: data._id,
       address: data.address,
       owner: data.owner,
@@ -119,7 +120,7 @@ const MyCollectionEdit = ({ web3, account }) => {
               {
                 logo && !file &&
                 <img
-                  src={`${config.api}/${logo}`}
+                  src={`${logo}`}
                   alt="/"
                   className="h-[80px] w-[80px] mt-1 rounded-full" />
               }{
