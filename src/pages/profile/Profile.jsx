@@ -227,7 +227,7 @@ const Profile = ({ web3, account, balance }) => {
                 </div>
 
                 <div className='mt-[30px] lg:mt-10 block w-full overflow-x-scroll horizontal_slider'>
-                    <div className='block whitespace-nowrap space-x-5 lg:space-x-[2.65rem]'>
+                    <div className='inline-flex space-x-5 lg:space-x-[2.65rem]'>
                         {
                             nfts
                         }

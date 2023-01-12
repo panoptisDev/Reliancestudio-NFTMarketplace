@@ -5,7 +5,7 @@ const AlertImportNft = ({ active, setActive }) => {
     const [open, setOpen] = useState(true)
     return (
         <Transition.Root show={open} as={Fragment}>
-            <div className={active ? "fixed w-screen h-screen top-0 mt-[70px] lg:mt-0 left-0 flex justify-center z-50 scale-100" : "fixed w-screen h-screen top-0 left-0 flex items-center justify-center z-50 scale-0"} onClick={() => setActive(false)}>
+            <div className={active ? "fixed w-screen h-screen top-0 mt-[70px] lg:mt-0 left-0 flex justify-center z-50 scale-100" : "fixed w-screen h-screen top-0 left-0 flex items-center justify-center z-50 scale-0"}>
                 <div className="bg-white bg-opacity-20 w-[290px] lg:w-[440px] h-[50px] overflow-hidden px-2 py-3">
                     <div className="flex">
                         <div className="flex-shrink-0 mt-[2px]">
