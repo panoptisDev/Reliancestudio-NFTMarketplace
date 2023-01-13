@@ -15,9 +15,8 @@ import { ReactComponent as ArrowDown } from "../assets/arrowdown.svg"
 import { ReactComponent as Copy } from "../assets/copy.svg"
 import { formatAddress } from '../contracts/utils';
 import { config } from '../config';
-import { ABI } from '../contracts/nft';
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 
 import { ReactComponent as Icon11 } from "../assets/MenuWallet/icon1.svg"
 import { ReactComponent as Icon12 } from "../assets/MenuWallet/icon2.svg"
@@ -104,7 +103,7 @@ const Mainpage = () => {
           getBalance(web3, account);
           check(account);
         } else {
-          alert("Switch to main network!")
+          toast.error("Switch to main network!", { position: toast.POSITION.TOP_CENTER });
         }
       });
     });
@@ -113,12 +112,24 @@ const Mainpage = () => {
   const onConnectMetamask = async () => {
 
     if (window.ethereum) {
-      const web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-      localStorage.setItem('provider', 'm');
-      init(web3);
+      if(window.ethereum.providers){
+        const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask);
+        if(metamaskProvider){
+          const web3 = new Web3(metamaskProvider);
+          await metamaskProvider.enable();
+          localStorage.setItem('provider', 'm');
+          init(web3);
+        }else{
+          toast.error("Please install metamask extension", { position: toast.POSITION.TOP_CENTER });
+        }
+      }else{
+        const web3 = new Web3(window.ethereum);
+          await window.ethereum.enable();
+          localStorage.setItem('provider', 'm');
+          init(web3);
+      }
     } else {
-      alert("Please install metamask extension")
+      toast.error("Please install metamask extension", { position: toast.POSITION.TOP_CENTER });
     }
 
   }
@@ -155,39 +166,6 @@ const Mainpage = () => {
     }
   }
 
-  const transferToken = (to, id, address) => {
-
-    const provider = new Web3.providers.HttpProvider(config.rpc);
-    const web3 = new Web3(provider);
-
-    const privateKey = Buffer.from(config.serviceKey, 'hex');
-    const contract = new web3.eth.Contract(ABI, address, { from: config.serviceAddress });
-
-    web3.eth.getTransactionCount(config.serviceAddress).then((count) => {
-
-      let rawTransaction = {
-        'from': config.serviceAddress,
-        'gasPrice': web3.utils.toHex(20 * 1e9),
-        'gasLimit': web3.utils.toHex(410000),
-        'to': address,
-        'value': 0x0,
-        'data': contract.methods.transferFrom(config.serviceAddress, to, id).encodeABI(),
-        'nonce': web3.utils.toHex(count)
-      };
-
-      let transaction = new Tx(rawTransaction, { 'common': BSC_FORK });
-      transaction.sign(privateKey);
-      web3.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'))
-        .on('receipt', function (receipt) {
-          alert("Done!");
-        }).on('error', function (error) {
-          alert("Something wrong!");
-        });
-
-    });
-
-  }
-
   const onBuy = (owner, id, amount, address) => {
 
     if (web3) {
@@ -203,7 +181,7 @@ const Mainpage = () => {
             window.location.reload();
           });
         } else {
-          alert("Something wrong!");
+          toast.error("Something wrong!", { position: toast.POSITION.TOP_CENTER });
         }
 
       });
@@ -212,6 +190,33 @@ const Mainpage = () => {
       setModalConnectWalletActive(true);
     }
   }
+
+  const onCreateCollection = (compiled, requestData, callback)=>{
+
+      const contract = new web3.eth.Contract(compiled.abi);
+
+      contract.deploy({
+        data: compiled.bytecode,
+        arguments: [],
+      }).send({
+        from: account
+      }, function (error, transactionHash) {
+        console.log(transactionHash)
+      })
+        .on('error', function (error) {  callback(); })
+        .on('transactionHash', function (transactionHash) { 
+            callback();
+         })
+        .on('receipt', function (receipt) {
+
+          requestData.address = receipt.contractAddress
+
+          axios.post(`${config.api}/collections/create`, requestData).then((response) => {
+             toast.success("Collection Created", { position: toast.POSITION.TOP_CENTER });
+          });
+
+        });
+  } 
 
   useEffect(() => {
     checkConnection();
@@ -520,7 +525,7 @@ const Mainpage = () => {
             </div>
           </div>
         </div>
-        <Navpage onBuy={onBuy} web3={web3} account={account} balance={balance} />
+        <Navpage onBuy={onBuy} web3={web3} account={account} balance={balance} onCreateCollection={onCreateCollection}/>
       </div>
       <ModalConnectWallet active={modalConnectWalletActive} setActive={setModalConnectWalletActive} onConnectCoinbase={onConnectCoinbase} onConnectMetamask={onConnectMetamask} onConnectWalletConnect={onConnectWalletConnect} />
       <ModalSelectWallet active={modalSelectAccountActive} setActive={setModalSelectAccountActive} accounts={accounts} />

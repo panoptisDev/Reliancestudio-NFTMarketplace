@@ -5,10 +5,12 @@ import axios from 'axios';
 import { config } from '../config';
 import { toast } from 'react-toastify';
 import Loading from "./profile/Loading";
+import { useNavigate } from "react-router-dom";
 
 
-const MyCollectionCreate = ({ web3, account }) => {
+const MyCollectionCreate = ({ web3, account, onCreateCollection }) => {
 
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
   const [totalSupply, setTotalSupply] = useState(0);
@@ -66,41 +68,25 @@ const MyCollectionCreate = ({ web3, account }) => {
     axios.post(`${config.api}/contract/create`, { name, symbol }).then((response) => {
 
       const compiled = response.data;
-      const contract = new web3.eth.Contract(compiled.abi);
 
-      contract.deploy({
-        data: compiled.bytecode,
-        arguments: [],
-      }).send({
-        from: account
-      }, function (error, transactionHash) {
-        console.log(transactionHash)
-      })
-        .on('error', function (error) { console.log(error) })
-        .on('transactionHash', function (transactionHash) { console.log(transactionHash) })
-        .on('receipt', function (receipt) {
-
-          let requestData = {
+      let requestData = {
             name,
             author,
             description,
             type,
             totalSupply,
             logo: file,
-            owner: account,
-            address: receipt.contractAddress
-          }
+            owner: account
+       }
+       
+       onCreateCollection(compiled, requestData, ()=>{
+         navigate("/collections");
+       });
 
-          axios.post(`${config.api}/collections/create`, requestData)
-            .then((response) => {
-              window.location.href = '/collections';
-            });
-
-        });
 
     }).catch((err) => {
       console.log(err);
-      alert("Something wraong!");
+      alert("Something wrong!");
     });
 
   }
