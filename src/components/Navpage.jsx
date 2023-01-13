@@ -20,7 +20,7 @@ import MyCollectionMint from "../pages/MyCollectionMint";
 import MyCollectionCreate from "../pages/MyCollectionCreate";
 import Users from "../pages/users/Users";
 
-const Navpage = ({ onBuy, web3, account, balance }) => {
+const Navpage = ({ onBuy, web3, account, balance, onCreateCollection }) => {
     return (
         <React.Fragment>
             <section>
@@ -41,7 +41,7 @@ const Navpage = ({ onBuy, web3, account, balance }) => {
                     <Route path="/collections" element={<MyCollections  web3={web3} account={account} />} />
                     <Route path="/collections/edit/:address" element={<MyCollectionEdit ccount={account} />} />
                     <Route path="/collections/add" element={<MyCollectionAdd  web3={web3} account={account} />} />
-                    <Route path="/collections/create" element={<MyCollectionCreate  web3={web3} account={account} />} />
+                    <Route path="/collections/create" element={<MyCollectionCreate  web3={web3} account={account} onCreateCollection={onCreateCollection}/>} />
                     <Route path="/collections/mint/:address" element={<MyCollectionMint  web3={web3} account={account} />} />
                     <Route path="/users" element={<Users  web3={web3} account={account} />} />
                 </Routes>
