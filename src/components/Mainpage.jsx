@@ -36,19 +36,7 @@ import { ReactComponent as Icon6 } from "../assets/icons/icon6.svg"
 import { ReactComponent as Icon7 } from "../assets/icons/icon7.svg"
 import { ReactComponent as Arrow } from '../assets/arrow.svg';
 
-const Tx = require('ethereumjs-tx').Transaction;
-const Common = require('ethereumjs-common').default;
-
-const BSC_FORK = Common.forCustomChain(
-  'mainnet',
-  {
-    name: 'Binance Smart Chain Mainnet',
-    networkId: 97,
-    chainId: 97,
-    url: config.rpc
-  },
-  'istanbul',
-);
+const mainChainId = 97;
 
 const sidebarNavigation = [
   { name: 'Popular NFT', path: '/popular', icon: Icon1, arrow: Arrow },
@@ -91,20 +79,37 @@ const Mainpage = () => {
     window.location.href = '/';
   }
 
-  const init = (web3) => {
+  const setData = (web3, account, accounts)=>{
+    setWeb3(web3);
+    setAccount(account);
+    setModalConnectWalletActive(false);
+    setAccounts(accounts);
+    getBalance(web3, account);
+    check(account);
+  }
+
+  const init = (web3, provider) => {
+
     web3.eth.getAccounts().then((accounts) => {
+
       let account = accounts[0];
+
       web3.eth.net.getId().then((chainId) => {
-        if (chainId === 97) {
-          setWeb3(web3);
-          setAccount(account);
-          setModalConnectWalletActive(false);
-          setAccounts(accounts);
-          getBalance(web3, account);
-          check(account);
+
+        if (chainId === mainChainId) {
+          setData(web3, account, accounts);
         } else {
-          toast.error("Switch to main network!", { position: toast.POSITION.TOP_CENTER });
+
+          provider.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: web3.utils.toHex(mainChainId) }]
+          }).then(()=>{
+            setData(web3, account, accounts);
+          }).catch(()=>{
+            toast.error("Please switch to mainnet", { position: toast.POSITION.TOP_CENTER });
+          })
         }
+
       });
     });
   }
@@ -112,21 +117,28 @@ const Mainpage = () => {
   const onConnectMetamask = async () => {
 
     if (window.ethereum) {
+
       if(window.ethereum.providers){
+
         const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask);
+
         if(metamaskProvider){
+
           const web3 = new Web3(metamaskProvider);
           await metamaskProvider.enable();
           localStorage.setItem('provider', 'm');
-          init(web3);
+          init(web3, metamaskProvider);
+
         }else{
           toast.error("Please install metamask extension", { position: toast.POSITION.TOP_CENTER });
         }
       }else{
-        const web3 = new Web3(window.ethereum);
+
+          const web3 = new Web3(window.ethereum);
           await window.ethereum.enable();
           localStorage.setItem('provider', 'm');
-          init(web3);
+          init(web3, window.ethereum);
+
       }
     } else {
       toast.error("Please install metamask extension", { position: toast.POSITION.TOP_CENTER });
@@ -140,7 +152,7 @@ const Mainpage = () => {
     await provider.enable();
     const web3 = await new Web3(provider);
     localStorage.setItem('provider', 'w');
-    init(web3);
+    init(web3, provider);
 
   }
 
@@ -151,7 +163,7 @@ const Mainpage = () => {
     await provider.enable();
     const web3 = new Web3(provider);
     localStorage.setItem('provider', 'c');
-    init(web3);
+    init(web3, provider);
 
   }
 
