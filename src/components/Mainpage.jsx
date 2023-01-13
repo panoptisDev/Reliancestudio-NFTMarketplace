@@ -113,12 +113,17 @@ const Mainpage = () => {
   const onConnectMetamask = async () => {
 
     if (window.ethereum) {
-      const web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-      localStorage.setItem('provider', 'm');
-      init(web3);
+      const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask);
+      if(metamaskProvider){
+        const web3 = new Web3(metamaskProvider);
+        await metamaskProvider.enable();
+        localStorage.setItem('provider', 'm');
+        init(web3);
+      }else{
+        alert("Please install metamask extension");
+      }
     } else {
-      alert("Please install metamask extension")
+      alert("Please install metamask extension");
     }
 
   }
