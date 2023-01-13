@@ -87,14 +87,14 @@ const Collection = () => {
             <Validate className="absolute ml-[48px] mt-[27px] w-[15px] h-[15px]" />
             <p className="text-white text-[16px] font-gilroy whitespace-nowrap text-left">{col.name}</p>
           </div>
-          <p className="text-white text-[16px] font-gilroy whitespace-nowrap text-left pl-[220px]">{col.volume}</p>
+          <p className="text-white text-[16px] font-gilroy whitespace-nowrap text-left pl-[238px]">{(col.volume).toFixed(1)}</p>
           <div className="relative items-center -mr-[130px]">
-            <p className="text-white text-[16px] font-gilroy whitespace-nowrap text-right pr-[30px] inline-block">{col.volume}</p>
+            <p className="text-white text-[16px] font-gilroy whitespace-nowrap text-right pr-[4px] inline-block">{(col.volume).toFixed(1)}</p>
             {
               col.diff.indexOf('+') > (-1) &&
               <>
                 <PolygonUp className="absolute mt-[9px] right-0 mr-[44px] inline-block" />
-                <p className="text-[#beff55] text-[16px] font-gilroy whitespace-nowrap text-right inline-block">{col.diff}%</p>
+                <p className="text-[#beff55] text-[16px] font-gilroy whitespace-nowrap text-right  inline-block">{col.diff}%</p>
               </>
             }
             {

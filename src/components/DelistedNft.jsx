@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { config } from '../../config';
 
-export const NftBlock = ({ type })=>{
+
+export const DelistedNft = ({ type })=>{
 
     const [nfts, setNft] = useState([]);
 
@@ -22,8 +23,9 @@ export const NftBlock = ({ type })=>{
                      <img
                          src={nft.data.url}
                          alt="/"
-                         className="h-[250px] w-[240px] object-cover rounded-[10px] object-center group-hover:opacity-75"
+                         className="h-[250px] blur-sm bg-black opacity-30 w-[240px] object-cover rounded-[10px] object-center group-hover:opacity-75"
                      />
+                     <p className="absolute top-0 ml-[100px] mt-[155px] lg:ml-[68px] lg:mt-[120px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
                 </div>
                 <h3 className="mt-[12px] max-w-[250px] truncate text-[20px] font-gilroy text-white hover:text-[#beff55] px-5">{nft.collection} #{nft.id}</h3>
                 <p className="text-sm font-gilroy max-w-[250px] truncate text-[#888989] px-5">{nft.author}</p>
@@ -41,4 +43,4 @@ export const NftBlock = ({ type })=>{
     )
 }
 
-export default NftBlock;
+export default DelistedNft;
