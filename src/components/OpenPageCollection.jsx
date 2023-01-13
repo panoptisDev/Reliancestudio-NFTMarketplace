@@ -157,7 +157,7 @@ const OpenPageCollection = () => {
                     <div className="bg-[#1a1a19] w-[68px] ml-[52px] h-[25px] text-center rounded-[29px] mb-[18px]">
                       <p className="text-black font-gilroyMedium font-semibold text-sm mt-1"></p>
                     </div>
-                    <p className="justify-end uppercase font-gilroyMedium text-[36px] text-white leading-[16px]">{volume}</p>
+                    <p className="justify-end uppercase font-gilroyMedium text-[36px] text-white leading-[16px]">{volume.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -212,7 +212,7 @@ const OpenPageCollection = () => {
                     <div className="bg-[#1a1a19] w-[68px] ml-[52px] h-[25px] text-center rounded-[29px] mb-[18px]">
                       <p className="text-black font-gilroyMedium font-semibold text-sm mt-1"></p>
                     </div>
-                    <p className="justify-end uppercase font-gilroyMedium text-[36px] text-white leading-[16px]">{volume}</p>
+                    <p className="justify-end uppercase font-gilroyMedium text-[36px] text-white leading-[16px]">{volume.toFixed(2)}</p>
                   </div>
                 </div>
                 <div className='inline-block bg-[#1a1a19] w-[160px] h-[163px] rounded-[15px] cursor-pointer px-[20px] pt-[20px]'>

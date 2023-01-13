@@ -35,7 +35,7 @@ export const NftCard = ({ data, text, date, from})=>{
                     }
                     {
                         data.status === 'delisted' &&
-                        <p className="absolute top-0 ml-[100px] mt-[155px] lg:ml-[68px] lg:mt-[120px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
+                        <p className="absolute top-0 ml-[69px] mt-[120px] lg:ml-[68px] lg:mt-[120px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
                     }
             
                 </div>
