@@ -145,7 +145,7 @@ const OpenPageNFT = ({ onBuy, account }) => {
                                 <StatusTop className='absolute right-0 top-0 mt-[14px] mr-[14px] xl:mt-[17px] xl:mr-[17px]' />
                                 {
                                      current && current.data && current.status === 'delisted' && 
-                                     <p className="absolute top-0 ml-[120px] mt-[160px] lg:ml-[220px] lg:mt-[260px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
+                                     <p className="absolute top-0 ml-[120px] mt-[160px] 2xl:ml-[220px] 2xl:mt-[260px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
                                 }
                             </div>
                         </div>

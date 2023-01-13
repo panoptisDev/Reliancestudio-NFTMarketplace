@@ -69,7 +69,7 @@ const Hero = () => {
                     </div>
                 </div>
                 {
-                    Popular
+                    <Popular/>
                 }
                 <div className="flex justify-center">
                     <Link to="/launchpad" className='flex md:hidden mt-[30px] items-center justify-center w-[319px] h-[58px] text-white rounded-[41px] border-2 border-[#beff55] hover:bg-[#beff55] hover:text-black hover:font-gilroy hover:font-semibold text-base font-gilroy'>
