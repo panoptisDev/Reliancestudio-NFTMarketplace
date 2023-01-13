@@ -135,10 +135,18 @@ const OpenPageNFT = ({ onBuy, account }) => {
                         <div className="bg-[#1a1a19] border border-[#232323] w-[369px] h-[369px] 2xl:w-[560px] 2xl:h-[560px] rounded-[15px]">
                             <div className="overflow-hidden relative px-[10px] py-[10px]">
                                 {
-                                    current && current.data &&
+                                    current && current.data && current.status === 'listed' &&
                                     <img alt="img" src={current.data.url} className="w-[349px] h-[349px] 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
                                 }
+                                {
+                                     current && current.data && current.status === 'delisted' &&
+                                     <img alt="img" src={current.data.url} className="w-[349px] h-[349px] blur-sm bg-black opacity-30 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
+                                }
                                 <StatusTop className='absolute right-0 top-0 mt-[14px] mr-[14px] xl:mt-[17px] xl:mr-[17px]' />
+                                {
+                                     current && current.data && current.status === 'delisted' && 
+                                     <p className="absolute top-0 ml-[120px] mt-[160px] lg:ml-[220px] lg:mt-[260px] text-[26px] text-[#828383] font-gilroy">DELISTED</p>
+                                }
                             </div>
                         </div>
                     </div>
