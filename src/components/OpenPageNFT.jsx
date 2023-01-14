@@ -136,11 +136,11 @@ const OpenPageNFT = ({ onBuy, account }) => {
                             <div className="overflow-hidden relative px-[10px] py-[10px]">
                                 {
                                     current && current.data && current.status === 'listed' &&
-                                    <img alt="img" src={`https://ipfs.io/ipfs/${current.data.image.replace("ipfs://","")}`} className="w-[349px] h-[349px] 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
+                                    <img alt="img" src={`https://salmon-random-primate-536.mypinata.cloud/ipfs/${current.data.image.replace("ipfs://","")}`} className="w-[349px] h-[349px] 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
                                 }
                                 {
                                      current && current.data && current.status === 'delisted' &&
-                                     <img alt="img" src={`https://ipfs.io/ipfs/${current.data.image.replace("ipfs://","")}`} className="w-[349px] h-[349px] blur-sm bg-black opacity-30 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
+                                     <img alt="img" src={`https://salmon-random-primate-536.mypinata.cloud/ipfs/${current.data.image.replace("ipfs://","")}`} className="w-[349px] h-[349px] blur-sm bg-black opacity-30 2xl:w-[540px] 2xl:h-[540px] rounded-[10px] object-cover object-center group-hover:opacity-75"></img>
                                 }
                                 <StatusTop className='absolute right-0 top-0 mt-[14px] mr-[14px] xl:mt-[17px] xl:mr-[17px]' />
                                 {
