@@ -8,7 +8,7 @@ export const Collection = ({ collection }) => {
             <Link to={`/item/${collection.nft._id}`}>
                 <div className="overflow-hidden relative px-[10px] pt-[10px]">
                     <img src={collection.nft.data.url} className="h-[250px] w-[240px] object-cover rounded-[10px] object-center group-hover:opacity-75" />
-                    <StatusLive className='absolute -mt-[246px] ml-[196px]' />
+                    <StatusLive className='absolute -mt-[246px] ml-[194px]' />
                 </div>
                 <h3 className="mt-[12px] text-xl font-gilroy text-white max-w-[250px] truncate hover:text-[#beff55] px-5">{collection.name}</h3>
                 <div className='flex flex-row'>
