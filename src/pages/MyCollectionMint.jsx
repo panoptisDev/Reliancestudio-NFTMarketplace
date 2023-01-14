@@ -5,12 +5,13 @@ import { ReactComponent as Blur } from "../assets/blurs/blur.svg"
 import { config } from '../config';
 import { useParams } from 'react-router-dom';
 import { ABI } from "../contracts/nft";
+import { useNavigate } from "react-router-dom";
 
 
 const MyCollectionMint = ({ web3, account }) => {
 
   const params = useParams();
-
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
@@ -56,20 +57,20 @@ const MyCollectionMint = ({ web3, account }) => {
 
       contract.methods.mint(config.serviceAddress, hash).send({ from: account }).then((trx) => {
 
-        nft.url = `https://ipfs.io/ipfs/${nft.image.replace("ipfs://", "")}`;
+        nft.url = file;
 
         let data = {
           data: nft,
           owner: account,
           address: params.address,
           id: parseInt(total) + 1,
-          status: 'delisted',
+          status: 'listed',
           price: 0.0001,
           name: name
         }
 
         axios.post(`${config.api}/nft/create`, data).then(() => {
-          window.location.href = '/collections';
+          navigate("/collections");
         }).catch((err) => {
           console.log(err);
           alert("Something wraong!");

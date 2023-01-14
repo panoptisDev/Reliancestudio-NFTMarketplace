@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { config } from '../config';
+
+export const getImg = (img)=>{
+    return config.gataway + img.split('/').at(-1);
+}
 
 export const getDifference = ()=>{
     return new Promise((resolve, reject)=>{
