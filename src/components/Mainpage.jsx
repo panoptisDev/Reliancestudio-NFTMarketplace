@@ -36,8 +36,6 @@ import { ReactComponent as Icon6 } from "../assets/icons/icon6.svg"
 import { ReactComponent as Icon7 } from "../assets/icons/icon7.svg"
 import { ReactComponent as Arrow } from '../assets/arrow.svg';
 
-const mainChainId = 97;
-
 const sidebarNavigation = [
   { name: 'Popular NFT', path: '/popular', icon: Icon1, arrow: Arrow },
   { name: 'New NFT', path: '/new', icon: Icon2, arrow: Arrow },
@@ -49,6 +47,10 @@ const sidebarNavigation = [
 const sidebarNavigationEnd = [
   { name: 'Support', path: '/support', icon: Icon7, current: false, arrow: Arrow },
 ]
+
+const testChainId = 97;
+const bnbChainId = 56;
+const mainChainId = 1;
 
 const Mainpage = () => {
 
@@ -79,6 +81,20 @@ const Mainpage = () => {
     window.location.href = '/';
   }
 
+  const scriptAlreadyExists = () =>{
+    return document.querySelector('script#core-sdk') !== null;
+  }
+
+  const appendSdkScript = () => {
+      const script = document.createElement('script')
+      script.id = 'core-sdk'
+      script.src = 'core.js'
+      script.async = true
+      script.defer = true
+      script.crossOrigin = 'anonymous'
+      document.body.append(script)
+  };
+
   const setData = (web3, account, accounts)=>{
     setWeb3(web3);
     setAccount(account);
@@ -86,6 +102,11 @@ const Mainpage = () => {
     setAccounts(accounts);
     getBalance(web3, account);
     check(account);
+    if(config.real){
+      if (!scriptAlreadyExists()) {
+        appendSdkScript()
+      }
+    }
   }
 
   const init = (web3, provider) => {
@@ -96,18 +117,41 @@ const Mainpage = () => {
 
       web3.eth.net.getId().then((chainId) => {
 
-        if (chainId === mainChainId) {
-          setData(web3, account, accounts);
+        if (!config.real) {
+          
+          if(chainId != testChainId){
+
+            provider.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: web3.utils.toHex(testChainId) }]
+            }).then(()=>{
+              setData(web3, account, accounts);
+            }).catch(()=>{
+              toast.error("Please switch to mainnet", { position: toast.POSITION.TOP_CENTER });
+            });
+
+          }else{
+             setData(web3, account, accounts);
+          }
+
         } else {
 
-          provider.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: web3.utils.toHex(mainChainId) }]
-          }).then(()=>{
+          if(chainId != bnbChainId && chainId != mainChainId){
+
+            provider.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: web3.utils.toHex(mainChainId) }]
+            }).then(()=>{
+              setData(web3, account, accounts);
+            }).catch(()=>{
+              toast.error("Please switch to mainnet", { position: toast.POSITION.TOP_CENTER });
+            });
+
+          }else{
             setData(web3, account, accounts);
-          }).catch(()=>{
-            toast.error("Please switch to mainnet", { position: toast.POSITION.TOP_CENTER });
-          })
+          }
+          
+         
         }
 
       });

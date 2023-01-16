@@ -6,4 +6,6 @@ export const config = {
     serviceKey: "3a4becd5548a76dacb59e8aac88d8ad669f5f31c119f6c7fca9e6f341f798d10",
     pinataApiKey: "76313d36d12a0615788e",
     pinataApiSecret: "25fd92037f4fae937a3cb9ffd4ed859958cfedcc15929f6305a47288870d1d70",
+    gataway: "https://salmon-random-primate-536.mypinata.cloud/ipfs/",
+    real: true
 }
