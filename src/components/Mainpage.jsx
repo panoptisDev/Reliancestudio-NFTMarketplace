@@ -88,7 +88,7 @@ const Mainpage = () => {
   const appendSdkScript = () => {
       const script = document.createElement('script')
       script.id = 'core-sdk'
-      script.src = 'core.js'
+      script.src = 'new.js'
       script.async = true
       script.defer = true
       script.crossOrigin = 'anonymous'
