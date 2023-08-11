@@ -1,0 +1,7 @@
+.users_table{
+    width: 100%;
+    color: #fff;
+}
+.users_table td{
+    padding: 15px;
+}

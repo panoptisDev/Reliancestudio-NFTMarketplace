@@ -1,13 +1,11 @@
-a.active {
-    color: black;
-    font: 600;
-    background-color: #beff55;
-    border-radius: 41px;
+.activity:hover svg path {
+    stroke: black;
 }
 
-a.active svg path {
+.activity:hover svg circle {
     stroke: black;
 }
-a.active svg circle {
-    stroke: black;
+
+.activity2:hover svg path {
+    stroke: white;
 }

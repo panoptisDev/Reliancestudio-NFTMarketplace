@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as Search } from '../assets/search.svg';
-import { collections } from "../data";
 import { ReactComponent as Validate } from "../assets/validate.svg"
-import Section1Card1 from "../assets/cards/section1card1.png"
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { config } from '../config';
 
 export const SearchBarMob = () => {
 
     const [searchText, setSearchText] = useState("");
     const [result, setResult] = useState([]);
+    const [collections, setCollections] = useState([]);
+
+    useEffect(()=>{
+        axios.get(`${config.api}/collections/list`)
+        .then((response) => {
+            setCollections(response.data);
+        });
+    },[])
 
     const onSearchtextChange = (e) => {
         const text = e.target.value;
@@ -27,11 +35,11 @@ export const SearchBarMob = () => {
 
     const resultHtml = result.map((r, i) => {
         return (
-            <a key={i} href={`/collection/${r.address}`} className='w-[266px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] px-3 hover:bg-[#242424] text-white text-base font-gilroy ml-[18px]'>
+            <Link key={i} to={`/collection/${r.address}`} className='w-[266px] flex flex-row items-center justify-left xl:w-[506px] h-[70px] bg-transparent rounded-[15px] px-3 hover:bg-[#242424] text-white text-base font-gilroy ml-[18px]'>
                 <div className='flex flex-row'>
                     <div className='relative'>
                         <img
-                            src={r.image}
+                             src={`${r.logo}`}
                             alt="/"
                             className='h-[50px] w-[50px] rounded-full mr-4'
                         />
@@ -42,14 +50,14 @@ export const SearchBarMob = () => {
                         <p className='font-gilroy max-w-[160px] truncate text-[#828383] text-[14px] -mt-[3px]'>{r.owner}</p>
                     </div>
                 </div>
-            </a>
+            </Link>
         )
     });
 
     return (
         <div className="flex flex-row lg:hidden">
             <form className="flex" action="#" method="GET">
-                <div className="relative w-[300px] h-[50px] border-2 border-[#3b3c3c] rounded-[41px] text-black">
+                <div className="relative w-[300px] h-[50px] border-2 border-[#3b3c3c] hover:border-[#beff55] rounded-[41px] text-black">
                     <input
                         className="w-[263px] block h-full border-transparent pl-[30px] text-[#828383] placeholder-[#828383] bg-transparent focus:border-transparent font-gilroyMedium focus:outline-none focus:ring-0 text-[16px]"
                         placeholder="Search"
@@ -57,8 +65,8 @@ export const SearchBarMob = () => {
                         onChange={onSearchtextChange}
                     />
                     {
-                        result.length != 0 &&
-                        <div className='flex flex-col w-[300px] rounded-[15px] max-h-max bg-[#131313] mt-5'>
+                        result.length !== 0 &&
+                        <div className='flex flex-col w-[300px] rounded-[15px] max-h-[348px] overflow-y-scroll bg-[#131313] mt-5 horizontal_slider'>
                             <p className='mt-[10px] font-gilroy text-[18px] ml-[30px] text-[#828383]'>Found <span className='text-white font-gilroy text-[18px]'>{result.length} similarities</span></p>
                             <div className='mb-[10px]'>
                                 {resultHtml}
